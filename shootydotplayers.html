@@ -1,0 +1,14 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script>
+  var socket = io("https://sd-gamesrv.point0.tech");
+  socket.on("gamedata", function (gamedata) {
+    names.innerHTML = "";
+    for (var i = 0; i < Object.keys(gamedata.players).length; i++) {
+      var player = gamedata.players[Object.keys(gamedata.players)[i]];
+      var nameElem = document.createElement("p");
+      nameElem.innerText = player.name + " (" + player.score + (player.plague ? ", PLAGUE" : "") + ")";
+      names.appendChild(nameElem);
+    }
+  });
+</script>
+<div id="names"></div>

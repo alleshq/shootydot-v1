@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>shootydot</title>
+  <script>var devmode = location.hash === "#devmode";</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script src="servercommunication.js"></script>
+  <script src="renderer.js"></script>
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=KoHo|Major+Mono+Display" rel="stylesheet" />
+</head>
+<body>
+  <div id="gameMenu">
+    <p id="title">shootydot</p>
+    <p><input id="nameInput" placeholder="Name" /> <button onclick="declarePlayer(nameInput.value); localStorage.name = nameInput.value; this.blur(); $('#gameMenu').fadeOut();">Play</button></p>
+    <script>nameInput.value = localStorage.name ? localStorage.name : "";</script>
+    <br />
+    <p>Right click to use speed boost, Left click to shoot. Change direction with mouse. Created by <a href="https://abaer.dev">Archie Baer</a>.</p>
+    <br />
+    <p><input type="checkbox" id="renderStars" checked /> Render Stars [Turn off to increase performance]</p>
+    <br />
+    <div id="chatbox">
+    </div>
+  </div>
+  <canvas id="canvas"></canvas>
+  <script src="controls.js"></script>
+</body>
+</html>
